@@ -68,8 +68,8 @@ async fn draw_graph(vars: &mut Vars, points: &Vec<(f32, f32)>) {
 
     loop {
 
-        if is_key_down(KeyCode::PageUp) {zoom_level *= 1.0 + (dt * 1.0)}
-        if is_key_down(KeyCode::PageDown) {zoom_level *= 1.0 - (dt * 1.0)}
+        if is_key_down(KeyCode::W) {zoom_level *= 1.0 + (dt * 1.0)}
+        if is_key_down(KeyCode::S) {zoom_level *= 1.0 - (dt * 1.0)}
         zoom_level = zoom_level.clamp(0.5, 7.0);
 
         cam.zoom = vec2(zoom_level / screen_width() * 2.0, zoom_level / screen_height() * 2.0);
@@ -93,6 +93,13 @@ async fn draw_graph(vars: &mut Vars, points: &Vec<(f32, f32)>) {
                 draw_line(x1, y1, x2, y2, 1.2, BLUE);
             }
         } 
+
+        set_default_camera();
+        draw_text_ex("'W' and 'S'for zooming", 30., 30., TextParams {
+            font_size: 20. as u16, 
+            color: YELLOW,
+            ..Default::default()
+        });
         
         next_frame().await;
     }

@@ -11,6 +11,7 @@ pub fn get_input() -> Result<Vec<char>, String> {
 }
 
 fn get_input_string() -> String {
+    println!("Pleasy provide a function. Example -> 2x + 3x^2 / x^(3-3*4x)");
     print!("f(x) = ");
     stdout().flush().expect("Could not flush output!");
     let mut input = String::new();
